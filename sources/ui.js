@@ -6,7 +6,6 @@ let page = 1;
 let matches = [];
 
 // create and display the initial set of books in preview
-
 export const renderBooks = function (displayedBooks) {
   const starting = document.createDocumentFragment();
   for (const { author, id, image, title } of displayedBooks) {
@@ -169,5 +168,20 @@ export const displayBookDetails = function (event, books, authors) {
         document.querySelector("[data-list-description]").innerText =
           active.description;
       }
+    });
+};
+
+/**
+ *
+ * Overlay Toggles
+ *
+ */
+
+export const setupSearchOverlayToggle = function () {
+  document
+    .querySelector("[data-header-search]")
+    .addEventListener("click", () => {
+      openOverlay("[data-search-overlay]");
+      document.querySelector("[data-search-title]").focus();
     });
 };

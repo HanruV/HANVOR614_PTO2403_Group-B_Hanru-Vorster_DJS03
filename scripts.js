@@ -8,6 +8,7 @@ import {
   loadMoreBooks,
   updateShowMoreButton,
   displayBookDetails,
+  setupSearchOverlayToggle,
 } from "./sources/ui.js";
 import { applyTheme } from "./sources/settings.js";
 import { filterAndDisplayBooks } from "./sources/search.js";
@@ -21,6 +22,9 @@ let matches = books;
 renderBooks(matches.slice(0, BOOKS_PER_PAGE));
 setupDropdowns(genres, authors);
 setInitialTheme();
+
+//overlay toggles
+setupSearchOverlayToggle();
 
 // theme change when settings form is submitted
 document
@@ -62,12 +66,6 @@ document
   .addEventListener("click", () => {
     closeOverlay("[data-settings-overlay]");
   });
-
-// openens the search overlay and focus the search input
-document.querySelector("[data-header-search]").addEventListener("click", () => {
-  openOverlay("[data-search-overlay]");
-  document.querySelector("[data-search-title]").focus();
-});
 
 // opens the settings overlay
 document
