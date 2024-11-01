@@ -5,6 +5,7 @@ import {
   closeOverlay,
   openOverlay,
   setInitialTheme,
+  loadMoreBooks,
 } from "./sources/ui.js";
 import { applyTheme } from "./sources/settings.js";
 import { filterAndDisplayBooks } from "./sources/search.js";
@@ -99,33 +100,11 @@ document
   });
 
 // loads extra books when (Show more) button is clicked
+const listButton = document.querySelector("[data-list-button]");
+const listContainer = document.querySelector("[data-list-items]");
+
 document.querySelector("[data-list-button]").addEventListener("click", () => {
-  const fragment = document.createDocumentFragment();
-
-  for (const { author, id, image, title } of matches.slice(
-    page * BOOKS_PER_PAGE,
-    (page + 1) * BOOKS_PER_PAGE
-  )) {
-    const element = document.createElement("button");
-    element.classList = "preview";
-    element.setAttribute("data-preview", id);
-
-    element.innerHTML = `
-            <img
-                class="preview__image"
-                src="${image}"
-            />
-            
-            <div class="preview__info">
-                <h3 class="preview__title">${title}</h3>
-                <div class="preview__author">${authors[author]}</div>
-            </div>
-        `;
-
-    fragment.appendChild(element);
-  }
-
-  document.querySelector("[data-list-items]").appendChild(fragment);
+  loadMoreBooks(matches, page, BOOKS_PER_PAGE, authors, listContainer);
   page += 1;
 });
 
