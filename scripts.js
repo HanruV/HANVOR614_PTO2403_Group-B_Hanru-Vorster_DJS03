@@ -3,7 +3,6 @@ import {
   renderBooks,
   setupDropdowns,
   closeOverlay,
-  openOverlay,
   setInitialTheme,
   loadMoreBooks,
   updateShowMoreButton,
