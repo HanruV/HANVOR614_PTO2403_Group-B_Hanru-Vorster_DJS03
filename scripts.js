@@ -5,6 +5,7 @@ import {
   setInitialTheme,
   loadMoreBooks,
   updateShowMoreButton,
+  updateShowMoreButtonText,
   displayBookDetails,
   setupSearchOverlayToggle,
   setupSettingsOverlayToggle,
@@ -43,14 +44,14 @@ changeTheme();
 //   matches.length - page * BOOKS_PER_PAGE > 0;
 
 // updates the (Show more) button to display the remaining number of books
-document.querySelector("[data-list-button]").innerHTML = `
-    <span>Show more</span>
-    <span class="list__remaining"> (${
-      matches.length - page * BOOKS_PER_PAGE > 0
-        ? matches.length - page * BOOKS_PER_PAGE
-        : 0
-    })</span>
-`;
+// document.querySelector("[data-list-button]").innerHTML = `
+//     <span>Show more</span>
+//     <span class="list__remaining"> (${
+//       matches.length - page * BOOKS_PER_PAGE > 0
+//         ? matches.length - page * BOOKS_PER_PAGE
+//         : 0
+//     })</span>
+// `;
 
 // // filters the book list based on the search criteria and updates the display
 document
@@ -72,9 +73,11 @@ document
     page = result.page;
   });
 
-// loads extra books when (Show more) button is clicked
+// loads extra books when (Show more) button is clicked and updates the text in the button
 const listButton = document.querySelector("[data-list-button]");
 const listContainer = document.querySelector("[data-list-items]");
+
+updateShowMoreButtonText(listButton, matches, page, BOOKS_PER_PAGE);
 
 document.querySelector("[data-list-button]").addEventListener("click", () => {
   loadMoreBooks(matches, page, BOOKS_PER_PAGE, authors, listContainer);

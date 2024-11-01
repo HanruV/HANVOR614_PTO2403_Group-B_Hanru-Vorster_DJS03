@@ -129,7 +129,7 @@ export const loadMoreBooks = function (
   listContainer.appendChild(fragment);
 };
 
-// updates the (Show more) button text and enables/disables it based on the remaining books
+// updates the (Show more) button and enables/disables it based on the remaining books
 export function updateShowMoreButton(button, matches, page, BOOKS_PER_PAGE) {
   const remainingBooks = matches.length - page * BOOKS_PER_PAGE;
   button.innerHTML = `
@@ -139,6 +139,23 @@ export function updateShowMoreButton(button, matches, page, BOOKS_PER_PAGE) {
         })</span>
     `;
   button.disabled = remainingBooks <= 0;
+}
+
+// updates the (Show more) button text based on remaining books
+export function updateShowMoreButtonText(
+  button,
+  matches,
+  page,
+  BOOKS_PER_PAGE
+) {
+  const remainingBooks =
+    matches.length - page * BOOKS_PER_PAGE > 0
+      ? matches.length - page * BOOKS_PER_PAGE
+      : 0;
+  button.innerHTML = `
+      <span>Show more</span>
+      <span class="list__remaining"> (${remainingBooks})</span>
+    `;
 }
 
 // shows book details in an overlay when a book preview is clicked
