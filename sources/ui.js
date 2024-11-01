@@ -122,3 +122,15 @@ export const loadMoreBooks = function (
   }
   listContainer.appendChild(fragment);
 };
+
+// updates the (Show more) button text and enables/disables it based on the remaining books
+export function updateShowMoreButton(button, matches, page, BOOKS_PER_PAGE) {
+  const remainingBooks = matches.length - page * BOOKS_PER_PAGE;
+  button.innerHTML = `
+        <span>Show more</span>
+        <span class="list__remaining"> (${
+          remainingBooks > 0 ? remainingBooks : 0
+        })</span>
+    `;
+  button.disabled = remainingBooks <= 0;
+}

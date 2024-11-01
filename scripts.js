@@ -6,6 +6,7 @@ import {
   openOverlay,
   setInitialTheme,
   loadMoreBooks,
+  updateShowMoreButton,
 } from "./sources/ui.js";
 import { applyTheme } from "./sources/settings.js";
 import { filterAndDisplayBooks } from "./sources/search.js";
@@ -106,6 +107,7 @@ const listContainer = document.querySelector("[data-list-items]");
 document.querySelector("[data-list-button]").addEventListener("click", () => {
   loadMoreBooks(matches, page, BOOKS_PER_PAGE, authors, listContainer);
   page += 1;
+  updateShowMoreButton(listButton, matches, page, BOOKS_PER_PAGE);
 });
 
 // shows book details in an overlay when a book preview is clicked
