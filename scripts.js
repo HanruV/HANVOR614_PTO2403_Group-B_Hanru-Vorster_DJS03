@@ -21,7 +21,7 @@ let page = 1;
 // initialising the list of matched books, showing all books from the start of the load
 let matches = books;
 
-// setting up initial book display for page
+// initial book display for page and drop downs for filtering
 renderBooks(matches.slice(0, BOOKS_PER_PAGE));
 setupDropdowns(genres, authors);
 
@@ -32,7 +32,7 @@ setupSettingsOverlayToggle();
 setupSettingsOverlayClose();
 setupBookDetailsOverlayClose();
 
-// theme initialisation and changing theme
+// theme management
 setInitialTheme();
 changeTheme();
 
