@@ -187,6 +187,15 @@ export const setupSearchOverlayToggle = function () {
     });
 };
 
+// closes the search overlay when the cancel button is clicked
+export const setupSearchOverlayClose = function () {
+  document
+    .querySelector("[data-search-cancel]")
+    .addEventListener("click", () => {
+      closeOverlay("[data-search-overlay]");
+    });
+};
+
 // opens the settings overlay
 export const setupSettingsOverlayToggle = function () {
   document
