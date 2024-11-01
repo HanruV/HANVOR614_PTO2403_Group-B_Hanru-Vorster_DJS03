@@ -177,11 +177,21 @@ export const displayBookDetails = function (event, books, authors) {
  *
  */
 
+// Opens the search overlay and focuses the search input
 export const setupSearchOverlayToggle = function () {
   document
     .querySelector("[data-header-search]")
     .addEventListener("click", () => {
       openOverlay("[data-search-overlay]");
       document.querySelector("[data-search-title]").focus();
+    });
+};
+
+// opens the settings overlay
+export const setupSettingsOverlayToggle = function () {
+  document
+    .querySelector("[data-header-settings]")
+    .addEventListener("click", () => {
+      openOverlay("[data-settings-overlay]");
     });
 };
