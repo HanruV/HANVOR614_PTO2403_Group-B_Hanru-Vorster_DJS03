@@ -1,36 +1,39 @@
-import { books, authors, genres, BOOKS_PER_PAGE } from "./data.js";
+import { books, authors, genres, BOOKS_PER_PAGE } from "./sources/data.js";
+
+import { renderBooks } from "./sources/ui.js";
 
 // tracks the current page from 1
 let page = 1;
 // initialising the list of matched books, showing all books from the start of the load
 let matches = books;
 
-const starting = document.createDocumentFragment();
+renderBooks(matches.slice(0, BOOKS_PER_PAGE));
 
 // create and display the initial set of books in preview
-for (const { author, id, image, title } of matches.slice(0, BOOKS_PER_PAGE)) {
-  const element = document.createElement("button");
-  element.classList = "preview";
-  element.setAttribute("data-preview", id);
+// const starting = document.createDocumentFragment();
+// for (const { author, id, image, title } of matches.slice(0, BOOKS_PER_PAGE)) {
+//   const element = document.createElement("button");
+//   element.classList = "preview";
+//   element.setAttribute("data-preview", id);
 
-  element.innerHTML = `
-        <img
-            class="preview__image"
-            src="${image}"
-        />
-        
-        <div class="preview__info">
-            <h3 class="preview__title">${title}</h3>
-            <div class="preview__author">${authors[author]}</div>
-        </div>
-    `;
+//   element.innerHTML = `
+//       <img
+//           class="preview__image"
+//           src="${image}"
+//       />
 
-  starting.appendChild(element);
-}
+//       <div class="preview__info">
+//           <h3 class="preview__title">${title}</h3>
+//           <div class="preview__author">${authors[author]}</div>
+//       </div>
+//   `;
 
-document.querySelector("[data-list-items]").appendChild(starting);
+//   starting.appendChild(element);
+// }
 
-// populates the genre drop-dwon with options from the genres data.js
+// document.querySelector("[data-list-items]").appendChild(starting);
+
+// populates the genre drop-down with options from the genres data.js
 const genreHtml = document.createDocumentFragment();
 const firstGenreElement = document.createElement("option");
 firstGenreElement.value = "any";
