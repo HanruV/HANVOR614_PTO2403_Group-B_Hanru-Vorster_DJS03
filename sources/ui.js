@@ -101,62 +101,11 @@ export const setInitialTheme = function () {
   }
 };
 
-// Loads additional books and appends them to the list
-export const loadMoreBooks = function (
-  matches,
-  page,
-  BOOKS_PER_PAGE,
-  authors,
-  listContainer
-) {
-  const fragment = document.createDocumentFragment();
-  for (const { author, id, image, title } of matches.slice(
-    page * BOOKS_PER_PAGE,
-    (page + 1) * BOOKS_PER_PAGE
-  )) {
-    const element = document.createElement("button");
-    element.classList = "preview";
-    element.setAttribute("data-preview", id);
-    element.innerHTML = `
-            <img class="preview__image" src="${image}" />
-            <div class="preview__info">
-                <h3 class="preview__title">${title}</h3>
-                <div class="preview__author">${authors[author]}</div>
-            </div>
-        `;
-    fragment.appendChild(element);
-  }
-  listContainer.appendChild(fragment);
-};
-
-// updates the (Show more) button and enables/disables it based on the remaining books
-export function updateShowMoreButton(button, matches, page, BOOKS_PER_PAGE) {
-  const remainingBooks = matches.length - page * BOOKS_PER_PAGE;
-  button.innerHTML = `
-        <span>Show more</span>
-        <span class="list__remaining"> (${
-          remainingBooks > 0 ? remainingBooks : 0
-        })</span>
-    `;
-  button.disabled = remainingBooks <= 0;
-}
-
-// updates the (Show more) button text based on remaining books
-export function updateShowMoreButtonText(
-  button,
-  matches,
-  page,
-  BOOKS_PER_PAGE
-) {
-  const remainingBooks =
-    matches.length - page * BOOKS_PER_PAGE > 0
-      ? matches.length - page * BOOKS_PER_PAGE
-      : 0;
-  button.innerHTML = `
-      <span>Show more</span>
-      <span class="list__remaining"> (${remainingBooks})</span>
-    `;
-}
+/**
+ *
+ * Book details overlay
+ *
+ */
 
 // shows book details in an overlay when a book preview is clicked
 export const displayBookDetails = function (event, books, authors) {
@@ -244,3 +193,66 @@ export const setupBookDetailsOverlayClose = function () {
     closeOverlay("[data-list-active]");
   });
 };
+
+/**
+ *
+ * Load more books on the page
+ *
+ */
+
+// Loads additional books and appends them to the list
+export const loadMoreBooks = function (
+  matches,
+  page,
+  BOOKS_PER_PAGE,
+  authors,
+  listContainer
+) {
+  const fragment = document.createDocumentFragment();
+  for (const { author, id, image, title } of matches.slice(
+    page * BOOKS_PER_PAGE,
+    (page + 1) * BOOKS_PER_PAGE
+  )) {
+    const element = document.createElement("button");
+    element.classList = "preview";
+    element.setAttribute("data-preview", id);
+    element.innerHTML = `
+    <img class="preview__image" src="${image}" />
+    <div class="preview__info">
+    <h3 class="preview__title">${title}</h3>
+    <div class="preview__author">${authors[author]}</div>
+    </div>
+    `;
+    fragment.appendChild(element);
+  }
+  listContainer.appendChild(fragment);
+};
+
+// updates the (Show more) button and enables/disables it based on the remaining books
+export function updateShowMoreButton(button, matches, page, BOOKS_PER_PAGE) {
+  const remainingBooks = matches.length - page * BOOKS_PER_PAGE;
+  button.innerHTML = `
+        <span>Show more</span>
+        <span class="list__remaining"> (${
+          remainingBooks > 0 ? remainingBooks : 0
+        })</span>
+    `;
+  button.disabled = remainingBooks <= 0;
+}
+
+// updates the (Show more) button text based on remaining books
+export function updateShowMoreButtonText(
+  button,
+  matches,
+  page,
+  BOOKS_PER_PAGE
+) {
+  const remainingBooks =
+    matches.length - page * BOOKS_PER_PAGE > 0
+      ? matches.length - page * BOOKS_PER_PAGE
+      : 0;
+  button.innerHTML = `
+      <span>Show more</span>
+      <span class="list__remaining"> (${remainingBooks})</span>
+    `;
+}
