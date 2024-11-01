@@ -36,23 +36,6 @@ setupBookDetailsOverlayClose();
 setInitialTheme();
 changeTheme();
 
-// // update button (Show more) to display the remaining book count
-// document.querySelector("[data-list-button]").innerText = `Show more (${
-//   books.length - BOOKS_PER_PAGE
-// })`;
-// document.querySelector("[data-list-button]").enabled =
-//   matches.length - page * BOOKS_PER_PAGE > 0;
-
-// updates the (Show more) button to display the remaining number of books
-// document.querySelector("[data-list-button]").innerHTML = `
-//     <span>Show more</span>
-//     <span class="list__remaining"> (${
-//       matches.length - page * BOOKS_PER_PAGE > 0
-//         ? matches.length - page * BOOKS_PER_PAGE
-//         : 0
-//     })</span>
-// `;
-
 // // filters the book list based on the search criteria and updates the display
 document
   .querySelector("[data-search-form]")
