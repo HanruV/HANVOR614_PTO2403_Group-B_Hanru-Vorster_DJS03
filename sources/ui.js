@@ -73,3 +73,24 @@ export const closeOverlay = function (overlay) {
 export const openOverlay = function (overlay) {
   document.querySelector(overlay).open = true;
 };
+
+// loads the theme according to the user preferences
+export const setInitialTheme = function () {
+  const themeElement = document.querySelector("[data-settings-theme]");
+
+  if (
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+  ) {
+    themeElement.value = "night";
+    document.documentElement.style.setProperty("--color-dark", "255, 255, 255");
+    document.documentElement.style.setProperty("--color-light", "10, 10, 20");
+  } else {
+    themeElement.value = "day";
+    document.documentElement.style.setProperty("--color-dark", "10, 10, 20");
+    document.documentElement.style.setProperty(
+      "--color-light",
+      "255, 255, 255"
+    );
+  }
+};

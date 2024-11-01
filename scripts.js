@@ -4,6 +4,7 @@ import {
   setupDropdowns,
   closeOverlay,
   openOverlay,
+  setInitialTheme,
 } from "./sources/ui.js";
 import { applyTheme } from "./sources/settings.js";
 
@@ -15,20 +16,7 @@ let matches = books;
 // setting up initial book display for page
 renderBooks(matches.slice(0, BOOKS_PER_PAGE));
 setupDropdowns(genres, authors);
-
-// sets the initial theme on user system preferences
-if (
-  window.matchMedia &&
-  window.matchMedia("(prefers-color-scheme: dark)").matches
-) {
-  document.querySelector("[data-settings-theme]").value = "night";
-  document.documentElement.style.setProperty("--color-dark", "255, 255, 255");
-  document.documentElement.style.setProperty("--color-light", "10, 10, 20");
-} else {
-  document.querySelector("[data-settings-theme]").value = "day";
-  document.documentElement.style.setProperty("--color-dark", "10, 10, 20");
-  document.documentElement.style.setProperty("--color-light", "255, 255, 255");
-}
+setInitialTheme();
 
 // update button (Show more) to display the remaining book count
 document.querySelector("[data-list-button]").innerText = `Show more (${

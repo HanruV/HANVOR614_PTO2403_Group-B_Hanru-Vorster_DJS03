@@ -1,4 +1,5 @@
 //change theme
+
 export const applyTheme = function (theme) {
   if (theme === "night") {
     document.documentElement.style.setProperty("--color-dark", "255, 255, 255");
