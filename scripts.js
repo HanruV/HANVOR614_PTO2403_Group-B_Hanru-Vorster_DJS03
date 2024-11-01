@@ -137,7 +137,6 @@ document
     const { theme } = Object.fromEntries(formData);
 
     applyTheme(theme);
-
     closeOverlay("[data-settings-overlay]");
   });
 
