@@ -13,7 +13,7 @@ import {
   setupSettingsOverlayClose,
   setupBookDetailsOverlayClose,
 } from "./sources/ui.js";
-import { applyTheme } from "./sources/settings.js";
+import { changeTheme } from "./sources/settings.js";
 import { filterAndDisplayBooks } from "./sources/search.js";
 
 // tracks the current page from 1
@@ -21,10 +21,9 @@ let page = 1;
 // initialising the list of matched books, showing all books from the start of the load
 let matches = books;
 
-// setting up initial book display and theme for page
+// setting up initial book display for page
 renderBooks(matches.slice(0, BOOKS_PER_PAGE));
 setupDropdowns(genres, authors);
-setInitialTheme();
 
 //overlay toggles
 setupSearchOverlayToggle();
@@ -33,17 +32,9 @@ setupSettingsOverlayToggle();
 setupSettingsOverlayClose();
 setupBookDetailsOverlayClose();
 
-// theme change when settings form is submitted
-document
-  .querySelector("[data-settings-form]")
-  .addEventListener("submit", (event) => {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-    const { theme } = Object.fromEntries(formData);
-
-    applyTheme(theme);
-    closeOverlay("[data-settings-overlay]");
-  });
+// theme initialisation and changing theme
+setInitialTheme();
+changeTheme();
 
 // update button (Show more) to display the remaining book count
 document.querySelector("[data-list-button]").innerText = `Show more (${
