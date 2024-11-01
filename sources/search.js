@@ -73,3 +73,28 @@ export function filterAndDisplayBooks(
 
   return { matches, page };
 }
+
+export const updateSearchDisplay = function (
+  books,
+  authors,
+  page,
+  BOOKS_PER_PAGE
+) {
+  document
+    .querySelector("[data-search-form]")
+    .addEventListener("submit", (event) => {
+      event.preventDefault();
+      const formData = new FormData(event.target);
+      const filters = Object.fromEntries(formData);
+
+      const result = filterAndDisplayBooks(
+        books,
+        filters,
+        page,
+        BOOKS_PER_PAGE,
+        authors
+      );
+
+      return result;
+    });
+};

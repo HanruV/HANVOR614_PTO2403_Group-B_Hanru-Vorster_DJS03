@@ -14,7 +14,7 @@ import {
   setupBookDetailsOverlayClose,
 } from "./sources/ui.js";
 import { changeTheme } from "./sources/settings.js";
-import { filterAndDisplayBooks } from "./sources/search.js";
+import { updateSearchDisplay } from "./sources/search.js";
 
 // tracks the current page from 1
 let page = 1;
@@ -36,25 +36,8 @@ setupBookDetailsOverlayClose();
 setInitialTheme();
 changeTheme();
 
-// // filters the book list based on the search criteria and updates the display
-document
-  .querySelector("[data-search-form]")
-  .addEventListener("submit", (event) => {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-    const filters = Object.fromEntries(formData);
-
-    // filtering and updating display
-    const result = filterAndDisplayBooks(
-      books,
-      filters,
-      page,
-      BOOKS_PER_PAGE,
-      authors
-    );
-    matches = result.matches;
-    page = result.page;
-  });
+// filter and display the filtered books on the page
+updateSearchDisplay(books, authors, page, BOOKS_PER_PAGE);
 
 // loads extra books when (Show more) button is clicked and updates the text in the button
 const listButton = document.querySelector("[data-list-button]");
