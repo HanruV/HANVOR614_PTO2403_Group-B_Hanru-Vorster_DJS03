@@ -35,7 +35,7 @@ document
 document.querySelector("[data-list-button]").innerText = `Show more (${
   books.length - BOOKS_PER_PAGE
 })`;
-document.querySelector("[data-list-button]").disabled =
+document.querySelector("[data-list-button]").enabled =
   matches.length - page * BOOKS_PER_PAGE > 0;
 
 // updates the (Show more) button to display the remaining number of books
@@ -86,7 +86,7 @@ document
     const formData = new FormData(event.target);
     const filters = Object.fromEntries(formData);
 
-    // Use the abstracted function for filtering and displaying books
+    // filtering and updating display
     const result = filterAndDisplayBooks(
       books,
       filters,
