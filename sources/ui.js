@@ -69,3 +69,7 @@ export const setupDropdowns = function (genres, authors) {
 export const closeOverlay = function (overlay) {
   document.querySelector(overlay).open = false;
 };
+
+export const openOverlay = function (overlay) {
+  document.querySelector(overlay).open = true;
+};

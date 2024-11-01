@@ -1,5 +1,10 @@
 import { books, authors, genres, BOOKS_PER_PAGE } from "./sources/data.js";
-import { renderBooks, setupDropdowns, closeOverlay } from "./sources/ui.js";
+import {
+  renderBooks,
+  setupDropdowns,
+  closeOverlay,
+  openOverlay,
+} from "./sources/ui.js";
 import { applyTheme } from "./sources/settings.js";
 
 // tracks the current page from 1
@@ -44,19 +49,19 @@ document.querySelector("[data-list-button]").innerHTML = `
 
 // closes the search overlay when the cancel button is clicked
 document.querySelector("[data-search-cancel]").addEventListener("click", () => {
-  document.querySelector("[data-search-overlay]").open = false;
+  closeOverlay("[data-search-overlay]");
 });
 
 // closes the settings overlay when the cancel button is clicked
 document
   .querySelector("[data-settings-cancel]")
   .addEventListener("click", () => {
-    document.querySelector("[data-settings-overlay]").open = false;
+    closeOverlay("[data-settings-overlay]");
   });
 
 // openens the search overlay and focus the search input
 document.querySelector("[data-header-search]").addEventListener("click", () => {
-  document.querySelector("[data-search-overlay]").open = true;
+  openOverlay("[data-search-overlay]");
   document.querySelector("[data-search-title]").focus();
 });
 
@@ -64,12 +69,12 @@ document.querySelector("[data-header-search]").addEventListener("click", () => {
 document
   .querySelector("[data-header-settings]")
   .addEventListener("click", () => {
-    document.querySelector("[data-settings-overlay]").open = true;
+    openOverlay("[data-settings-overlay]");
   });
 
 // closes the book details overlay when the close button is clicked
 document.querySelector("[data-list-close]").addEventListener("click", () => {
-  document.querySelector("[data-list-active]").open = false;
+  closeOverlay("[data-list-active]");
 });
 
 // theme change when settings form is submitted
