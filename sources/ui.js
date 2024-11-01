@@ -213,3 +213,10 @@ export const setupSettingsOverlayClose = function () {
       closeOverlay("[data-settings-overlay]");
     });
 };
+
+// closes the book details overlay when the close button is clicked
+export const setupBookDetailsOverlayClose = function () {
+  document.querySelector("[data-list-close]").addEventListener("click", () => {
+    closeOverlay("[data-list-active]");
+  });
+};
