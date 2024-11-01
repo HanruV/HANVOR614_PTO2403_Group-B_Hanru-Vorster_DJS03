@@ -1,5 +1,5 @@
 import { books, authors, genres, BOOKS_PER_PAGE } from "./sources/data.js";
-import { renderBooks, setupDropdowns } from "./sources/ui.js";
+import { renderBooks, setupDropdowns, closeOverlay } from "./sources/ui.js";
 import { applyTheme } from "./sources/settings.js";
 
 // tracks the current page from 1
@@ -138,7 +138,7 @@ document
 
     applyTheme(theme);
 
-    document.querySelector("[data-settings-overlay]").open = false;
+    closeOverlay("[data-settings-overlay]");
   });
 
 // filters the book list based on the search criteria and updates the display

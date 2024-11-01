@@ -64,3 +64,7 @@ export const setupDropdowns = function (genres, authors) {
 
   document.querySelector("[data-search-authors]").appendChild(authorsHtml);
 };
+
+export const closeOverlay = function (overlay) {
+  document.querySelector(overlay).open = false;
+};
