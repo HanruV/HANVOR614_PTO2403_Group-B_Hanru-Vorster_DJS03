@@ -43,7 +43,7 @@ updateSearchDisplay(books, authors, page, BOOKS_PER_PAGE);
 const listButton = document.querySelector("[data-list-button]");
 const listContainer = document.querySelector("[data-list-items]");
 
-updateShowMoreButtonText(listButton, matches, page, BOOKS_PER_PAGE);
+updateShowMoreButtonText(listButton, matches, page, BOOKS_PER_PAGE); // updates the text
 
 document.querySelector("[data-list-button]").addEventListener("click", () => {
   loadMoreBooks(matches, page, BOOKS_PER_PAGE, authors, listContainer);
