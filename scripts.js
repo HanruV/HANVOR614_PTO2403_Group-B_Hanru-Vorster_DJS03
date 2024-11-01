@@ -1,12 +1,13 @@
 import { books, authors, genres, BOOKS_PER_PAGE } from "./sources/data.js";
-
 import { renderBooks, setupDropdowns } from "./sources/ui.js";
+import { applyTheme } from "./sources/settings.js";
 
 // tracks the current page from 1
 let page = 1;
 // initialising the list of matched books, showing all books from the start of the load
 let matches = books;
 
+// setting up initial book display for page
 renderBooks(matches.slice(0, BOOKS_PER_PAGE));
 setupDropdowns(genres, authors);
 
@@ -135,19 +136,7 @@ document
     const formData = new FormData(event.target);
     const { theme } = Object.fromEntries(formData);
 
-    if (theme === "night") {
-      document.documentElement.style.setProperty(
-        "--color-dark",
-        "255, 255, 255"
-      );
-      document.documentElement.style.setProperty("--color-light", "10, 10, 20");
-    } else {
-      document.documentElement.style.setProperty("--color-dark", "10, 10, 20");
-      document.documentElement.style.setProperty(
-        "--color-light",
-        "255, 255, 255"
-      );
-    }
+    applyTheme(theme);
 
     document.querySelector("[data-settings-overlay]").open = false;
   });

@@ -32,6 +32,7 @@ export const renderBooks = function (displayedBooks) {
   document.querySelector("[data-list-items]").appendChild(starting);
 };
 
+// creates the drop down list for genre and authors
 export const setupDropdowns = function (genres, authors) {
   const genreHtml = document.createDocumentFragment();
   const firstGenreElement = document.createElement("option");
