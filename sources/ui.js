@@ -204,3 +204,12 @@ export const setupSettingsOverlayToggle = function () {
       openOverlay("[data-settings-overlay]");
     });
 };
+
+// closes the settings overlay when the cancel button is clicked
+export const setupSettingsOverlayClose = function () {
+  document
+    .querySelector("[data-settings-cancel]")
+    .addEventListener("click", () => {
+      closeOverlay("[data-settings-overlay]");
+    });
+};

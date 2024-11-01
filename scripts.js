@@ -11,6 +11,7 @@ import {
   setupSearchOverlayToggle,
   setupSettingsOverlayToggle,
   setupSearchOverlayClose,
+  setupSettingsOverlayClose,
 } from "./sources/ui.js";
 import { applyTheme } from "./sources/settings.js";
 import { filterAndDisplayBooks } from "./sources/search.js";
@@ -29,6 +30,7 @@ setInitialTheme();
 setupSearchOverlayToggle();
 setupSearchOverlayClose();
 setupSettingsOverlayToggle();
+setupSettingsOverlayClose();
 
 // theme change when settings form is submitted
 document
@@ -58,13 +60,6 @@ document.querySelector("[data-list-button]").innerHTML = `
         : 0
     })</span>
 `;
-
-// closes the settings overlay when the cancel button is clicked
-document
-  .querySelector("[data-settings-cancel]")
-  .addEventListener("click", () => {
-    closeOverlay("[data-settings-overlay]");
-  });
 
 // closes the book details overlay when the close button is clicked
 document.querySelector("[data-list-close]").addEventListener("click", () => {
