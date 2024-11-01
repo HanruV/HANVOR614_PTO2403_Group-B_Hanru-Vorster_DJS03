@@ -2,7 +2,6 @@ import { books, authors, genres, BOOKS_PER_PAGE } from "./sources/data.js";
 import {
   renderBooks,
   setupDropdowns,
-  closeOverlay,
   setInitialTheme,
   loadMoreBooks,
   updateShowMoreButton,
@@ -36,12 +35,12 @@ setupBookDetailsOverlayClose();
 setInitialTheme();
 changeTheme();
 
-// update button (Show more) to display the remaining book count
-document.querySelector("[data-list-button]").innerText = `Show more (${
-  books.length - BOOKS_PER_PAGE
-})`;
-document.querySelector("[data-list-button]").enabled =
-  matches.length - page * BOOKS_PER_PAGE > 0;
+// // update button (Show more) to display the remaining book count
+// document.querySelector("[data-list-button]").innerText = `Show more (${
+//   books.length - BOOKS_PER_PAGE
+// })`;
+// document.querySelector("[data-list-button]").enabled =
+//   matches.length - page * BOOKS_PER_PAGE > 0;
 
 // updates the (Show more) button to display the remaining number of books
 document.querySelector("[data-list-button]").innerHTML = `
