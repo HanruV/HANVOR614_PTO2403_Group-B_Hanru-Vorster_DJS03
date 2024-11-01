@@ -1,6 +1,6 @@
 import { books, authors, genres, BOOKS_PER_PAGE } from "./sources/data.js";
 
-import { renderBooks } from "./sources/ui.js";
+import { renderBooks, setupDropdowns } from "./sources/ui.js";
 
 // tracks the current page from 1
 let page = 1;
@@ -8,6 +8,7 @@ let page = 1;
 let matches = books;
 
 renderBooks(matches.slice(0, BOOKS_PER_PAGE));
+setupDropdowns(genres, authors);
 
 // create and display the initial set of books in preview
 // const starting = document.createDocumentFragment();
@@ -33,37 +34,37 @@ renderBooks(matches.slice(0, BOOKS_PER_PAGE));
 
 // document.querySelector("[data-list-items]").appendChild(starting);
 
-// populates the genre drop-down with options from the genres data.js
-const genreHtml = document.createDocumentFragment();
-const firstGenreElement = document.createElement("option");
-firstGenreElement.value = "any";
-firstGenreElement.innerText = "All Genres";
-genreHtml.appendChild(firstGenreElement);
+// // populates the genre drop-down with options from the genres data.js
+// const genreHtml = document.createDocumentFragment();
+// const firstGenreElement = document.createElement("option");
+// firstGenreElement.value = "any";
+// firstGenreElement.innerText = "All Genres";
+// genreHtml.appendChild(firstGenreElement);
 
-for (const [id, name] of Object.entries(genres)) {
-  const element = document.createElement("option");
-  element.value = id;
-  element.innerText = name;
-  genreHtml.appendChild(element);
-}
+// for (const [id, name] of Object.entries(genres)) {
+//   const element = document.createElement("option");
+//   element.value = id;
+//   element.innerText = name;
+//   genreHtml.appendChild(element);
+// }
 
-document.querySelector("[data-search-genres]").appendChild(genreHtml);
+// document.querySelector("[data-search-genres]").appendChild(genreHtml);
 
-// populates the theme based on the authors drop-down with options from the authors data.js
-const authorsHtml = document.createDocumentFragment();
-const firstAuthorElement = document.createElement("option");
-firstAuthorElement.value = "any";
-firstAuthorElement.innerText = "All Authors";
-authorsHtml.appendChild(firstAuthorElement);
+// // populates the theme based on the authors drop-down with options from the authors data.js
+// const authorsHtml = document.createDocumentFragment();
+// const firstAuthorElement = document.createElement("option");
+// firstAuthorElement.value = "any";
+// firstAuthorElement.innerText = "All Authors";
+// authorsHtml.appendChild(firstAuthorElement);
 
-for (const [id, name] of Object.entries(authors)) {
-  const element = document.createElement("option");
-  element.value = id;
-  element.innerText = name;
-  authorsHtml.appendChild(element);
-}
+// for (const [id, name] of Object.entries(authors)) {
+//   const element = document.createElement("option");
+//   element.value = id;
+//   element.innerText = name;
+//   authorsHtml.appendChild(element);
+// }
 
-document.querySelector("[data-search-authors]").appendChild(authorsHtml);
+// document.querySelector("[data-search-authors]").appendChild(authorsHtml);
 
 // sets the initial theme on user system preferences
 if (
