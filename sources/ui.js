@@ -1,4 +1,5 @@
 import { authors, BOOKS_PER_PAGE } from "./data.js";
+import "./Components/BookPreview.js";
 
 // tracks the current page from 1
 let page = 1;
@@ -9,7 +10,7 @@ let matches = [];
 export const renderBooks = function (displayedBooks) {
   const starting = document.createDocumentFragment();
   for (const { author, id, image, title } of displayedBooks) {
-    const element = document.createElement("button");
+    const element = document.createElement("book-preview");
     element.classList = "preview";
     element.setAttribute("data-preview", id);
 

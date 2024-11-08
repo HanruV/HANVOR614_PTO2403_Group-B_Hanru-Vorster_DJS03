@@ -47,3 +47,7 @@ flowchart TD
 - added the attributes it will work with
 - added the html template in render()
 - exported the web component
+
+### Importing to ui.js to update functions that use the new component
+
+- fed as argument in renderbooks for the create element (getting null back in disay)
