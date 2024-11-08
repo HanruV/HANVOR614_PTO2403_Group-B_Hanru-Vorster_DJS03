@@ -78,6 +78,8 @@ class BookPreview extends HTMLElement {
   }
 }
 
-customElements.define("book-preview", BookPreview);
+if (!customElements.get("book-preview")) {
+  customElements.define("book-preview", BookPreview);
+}
 
 export default BookPreview;

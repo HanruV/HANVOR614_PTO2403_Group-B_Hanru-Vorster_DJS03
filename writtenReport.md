@@ -56,3 +56,7 @@ flowchart TD
 - fed as argument in the loadMoreBooks where the element is created
 
 ### Added the component sctipt to HTML
+
+### Error BookPreview.js:81 Uncaught NotSupportedError: Failed to execute 'define' on 'CustomElementRegistry': the name "book-preview" has already been used with this registry at BookPreview.js:81:16
+
+- fixed by adding a check when defining the webcomponent so it doesnt make multiple isntances.
