@@ -51,3 +51,4 @@ flowchart TD
 ### Importing to ui.js to update functions that use the new component
 
 - fed as argument in renderbooks for the create element (getting null back in disay)
+  - fixed by replacing the existing elements html in the function to the new attributes because book-preview already returns the html, this just sets the custom attribures (forgot to add styling)

@@ -11,20 +11,10 @@ export const renderBooks = function (displayedBooks) {
   const starting = document.createDocumentFragment();
   for (const { author, id, image, title } of displayedBooks) {
     const element = document.createElement("book-preview");
-    element.classList = "preview";
-    element.setAttribute("data-preview", id);
-
-    element.innerHTML = `
-          <img
-              class="preview__image"
-              src="${image}"
-          />
-    
-          <div class="preview__info">
-              <h3 class="preview__title">${title}</h3>
-              <div class="preview__author">${authors[author]}</div>
-          </div>
-      `;
+    element.setAttribute("image", image);
+    element.setAttribute("title", title);
+    element.setAttribute("author", authors[author]);
+    element.setAttribute("id", id);
 
     starting.appendChild(element);
   }
