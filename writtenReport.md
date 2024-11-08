@@ -39,3 +39,11 @@ flowchart TD
     settings --> scripts
     ui --> scripts
 ```
+
+## Making of the custom element web component BookPreview
+
+### Began with a boiler plate
+
+- added the attributes it will work with
+- added the html template in render()
+- exported the web component
